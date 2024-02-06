@@ -31,6 +31,7 @@ class MemberController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // dd($member);
             $entityManager->persist($member);
             $entityManager->flush();
 

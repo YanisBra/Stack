@@ -6,19 +6,21 @@ use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
-class RegistrationFormType extends AbstractType
+class MemberRegistrationFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('email')
-            ->add('roles')
+            // ->add('roles')
             ->add('agreeTerms', CheckboxType::class, [
                                 'mapped' => false,
                 'constraints' => [
@@ -44,6 +46,14 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
+            ->add('first_name')
+            ->add('last_name')
+            ->add('username')
+            ->add('registration_date', DateType::class,[
+            ])
+            ->add('validated', CheckboxType::class)
+            ->add('biography')
+            ->add('reputation')
         ;
     }
 

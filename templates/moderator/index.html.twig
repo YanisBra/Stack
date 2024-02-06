@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Moderator index{% endblock %}
+
+{% block body %}
+    <h1>Moderator index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Roles</th>
+                <th>Password</th>
+                <th>First_name</th>
+                <th>Last_name</th>
+                <th>Username</th>
+                <th>Domain</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for moderator in moderators %}
+            <tr>
+                <td>{{ moderator.id }}</td>
+                <td>{{ moderator.email }}</td>
+                <td>{{ moderator.roles ? moderator.roles|json_encode : '' }}</td>
+                <td>{{ moderator.password }}</td>
+                <td>{{ moderator.firstName }}</td>
+                <td>{{ moderator.lastName }}</td>
+                <td>{{ moderator.username }}</td>
+                <td>{{ moderator.domain }}</td>
+                <td>
+                    <a href="{{ path('app_moderator_show', {'id': moderator.id}) }}">show</a>
+                    <a href="{{ path('app_moderator_edit', {'id': moderator.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_moderator_new') }}">Create new</a>
+{% endblock %}
