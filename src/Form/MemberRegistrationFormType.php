@@ -49,11 +49,11 @@ class MemberRegistrationFormType extends AbstractType
             ->add('first_name')
             ->add('last_name')
             ->add('username')
-            ->add('registration_date', DateType::class,[
-            ])
-            ->add('validated', CheckboxType::class)
+            // ->add('registration_date', DateType::class,[
+            // ])
+            // ->add('validated', CheckboxType::class)
             ->add('biography')
-            ->add('reputation')
+            // ->add('reputation')
         ;
     }
 

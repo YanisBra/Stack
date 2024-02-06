@@ -17,6 +17,7 @@ class MemberRegistrationController extends AbstractController
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {
         $user = new Member();
+        $user->setRoles(['ROLE_MEMBER']);
         $form = $this->createForm(MemberRegistrationFormType::class, $user);
         $form->handleRequest($request);
 

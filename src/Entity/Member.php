@@ -15,21 +15,26 @@ class Member extends User
     //private ?int $id = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $registration_date = null;
+    private ?\DateTimeInterface $registration_date;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $biography = null;
 
     #[ORM\Column]
-    private ?bool $validated = null;
+    private ?bool $validated = false;
 
     #[ORM\Column]
-    private ?int $reputation = null;
+    private ?int $reputation = 0;
 
     // public function getId(): ?int
     // {
     //     return $this->id;
     // }
+
+    public function __construct()
+    {
+        $this->registration_date = new \DateTime(); // Définir la date d'inscription comme la date actuelle lors de la création de l'objet
+    }
 
     public function getRegistrationDate(): ?\DateTimeInterface
     {
@@ -39,7 +44,6 @@ class Member extends User
     public function setRegistrationDate(\DateTimeInterface $registration_date): static
     {
         $this->registration_date = $registration_date;
-
         return $this;
     }
 

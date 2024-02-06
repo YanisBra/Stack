@@ -17,6 +17,7 @@ class ModeratorRegistrationController extends AbstractController
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {
         $user = new Moderator();
+        $user->setRoles(['ROLE_MODERATOR']);
         $form = $this->createForm(ModeratorRegistrationFormType::class, $user);
         $form->handleRequest($request);
 
