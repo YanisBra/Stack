@@ -12,6 +12,14 @@
         {% endblock %}
     </head>
     <body>
+    
+        <a href="{{path('app_user_index')}}">User Index</a>
+        <a href="{{path('app_member_index')}}">Member Index</a>
+        <a href="{{path('app_register')}}">Register</a>
+        <a href="{{path('app_login')}}">Login</a>
+        <a href="{{path('app_logout')}}">Logout</a>
         {% block body %}{% endblock %}
+
+
     </body>
 </html>
