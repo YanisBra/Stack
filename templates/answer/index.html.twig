@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Answer index{% endblock %}
+
+{% block body %}
+    <h1>Answer index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Reponse</th>
+                <th>Score</th>
+                <th>Preferred</th>
+                <th>Publication_date</th>
+                <th>Link</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for answer in answers %}
+            <tr>
+                <td>{{ answer.id }}</td>
+                <td>{{ answer.reponse }}</td>
+                <td>{{ answer.score }}</td>
+                <td>{{ answer.preferred ? 'Yes' : 'No' }}</td>
+                <td>{{ answer.publicationDate ? answer.publicationDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ answer.link }}</td>
+                <td>
+                    <a href="{{ path('app_answer_show', {'id': answer.id}) }}">show</a>
+                    <a href="{{ path('app_answer_edit', {'id': answer.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_answer_new') }}">Create new</a>
+{% endblock %}
